@@ -1,0 +1,20 @@
+import { makeObservable, observable, computed, action } from "mobx";
+
+export default class counterStore {
+  @observable count = 0;
+
+  constructor() {
+    makeObservable(this);
+  }
+
+  @computed get isNegative() {
+    return this.count < 0 ? 'yes' : 'no';
+  }
+
+  @action increase() {
+    this.count++;
+  }
+  @action decrease() {
+    this.count--;
+  }
+}
